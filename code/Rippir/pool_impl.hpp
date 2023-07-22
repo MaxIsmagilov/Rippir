@@ -91,7 +91,7 @@ class PoolImpl
   void close() {
     {
       std::unique_lock<std::mutex> l(q_lock);
-      for (auto&& unused : finished) {
+      for ([[maybe_unused]] auto&& unused : finished) {
         pending.push_back({});
       }
     }
