@@ -18,6 +18,10 @@ class Pool
 
   void close();
 
+  void cancel_pending();
+
+  void finish();
+
   void abort();
 
   Pool();
