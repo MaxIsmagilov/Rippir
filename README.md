@@ -1,0 +1,2 @@
+# Ripper
+A multithreading utility
