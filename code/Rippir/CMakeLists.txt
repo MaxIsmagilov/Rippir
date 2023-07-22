@@ -1,13 +1,19 @@
-SET(Rippir_Headers
+SET(Rippir_Pub_Headers
+    pool.hpp
+    )
+
+SET(Rippir_Pri_Headers
     pool.hpp
     )
 
 SET(Rippir_Implementation
     pool.cpp
+    pool_impl.cpp
     )
 
 ADD_LIBRARY(Rippir_Objects OBJECT 
-    ${Rippir_Headers}  
+    ${Rippir_Pub_Headers}  
+    ${Rippir_Pri_Headers}  
     ${Rippir_Implementation}
     )
 
@@ -34,7 +40,7 @@ if (WIN32)
         CXX_STANDARD 20
         CXX_STANDARD_REQUIRED YES
         COMPILE_OPTIONS "-Wall -Wextra -Werror"
-        PUBLIC_HEADER "${Rippir_Headers}")
+        PUBLIC_HEADER "${Rippir_Pub_Headers}")
 else ()
     SET_TARGET_PROPERTIES( Rippir
         PROPERTIES
@@ -42,7 +48,7 @@ else ()
         CXX_STANDARD 20
         CXX_STANDARD_REQUIRED YES
         COMPILE_OPTIONS "-Wall -Wextra -Werror"
-        PUBLIC_HEADER "${Rippir_Headers}")
+        PUBLIC_HEADER "${Rippir_Pub_Headers}")
 endif()
 
 INCLUDE(GNUInstallDirs)
