@@ -11,7 +11,7 @@ class Pool
  public:
   template <typename F, typename... Params>
   std::future<std::any> queue(F&& f, Params&&... args) {
-    return m_pool->queue(f, args...);
+    return m_pool->queue(std::forward<>(f), std::forward<>(args)...);
   }
 
   void go(std::size_t N = 1, std::launch policy = std::launch::async);
@@ -25,6 +25,7 @@ class Pool
   void abort();
 
   Pool();
+  ~Pool() = default;
 
  private:
   std::unique_ptr<PoolImpl> m_pool{};
